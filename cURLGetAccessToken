@@ -1,0 +1,25 @@
+First run this command to get access token
+
+Requirements to run below command
+
+client_Id & client_secret = You will get both from connected app that is responsible for access token
+
+Security token = Security token can get from View Profile > Settings > Security token > Reset Security Token after click on this button you will get an email with security token
+Password = org Password + Security token
+
+curl -X POST ^
+  https://login.salesforce.com/services/oauth2/token ^
+  -H "Content-Type: application/x-www-form-urlencoded" ^
+  -d "grant_type=password" ^
+  -d "client_id=clientId" ^
+  -d "client_secret=clientSecret" ^
+  -d "username=userName" ^
+  -d "password=password with security token"
+
+
+
+
+Second run below command to get the detail of the report or you can use this curl command in postman with the access token that we got from previous command
+
+curl  "Instance Url that you got from above command response/services/data/v60.0/analytics/reports/reportId" -H "Authorization: Bearer + Access token that we got from previous command" -H "Cookie: BrowserId=wXjrd3ZrEe-s56_8uOivBg; CookieConsentPolicy=0:1; LSKey-c\$CookieConsentPolicy=0:1"
+
